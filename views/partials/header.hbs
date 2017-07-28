@@ -1,44 +1,65 @@
 <section id="navbar">
-  		<nav class="navbar navbar-default">
-  			<div class="container">
-  				<!-- Brand and toggle get grouped for better mobile display -->
-  				<div class="navbar-header">
-  					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
   						<span class="sr-only">Toggle navigation</span>
   						<span class="icon-bar"></span>
   						<span class="icon-bar"></span>
   						<span class="icon-bar"></span>
   					</button>
-  				</div>
+      </div>
 
-  				<!-- Collect the nav links, forms, and other content for toggling -->
-  				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-  				</li>
-  			</ul>
+        </li>
+        </ul>
 
-  			<ul class="nav navbar-nav navbar-right">
-  				<li><a href="/"> Home</a></li>
-  				<li><a href="#brands">Brands</a></li>
-  				<li><a href="/about-us">About Us</a></li>
-  				<li><a href="/contact">Contact Us</a></li>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/"> Home</a></li>
+          <li class="dropdown">
 
-  				<li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- <img src="Images/account_img.png" class="profile-image img-circle"> -->
+              Brands
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu col-md-3 col-sm-4">
+              <li><a href="/khaadi"> Khaadi</a></li>
+              <li class="divider"></li>
+              <li><a href="/amiradnan"> Amir Adnan</a></li>
+              <li class="divider"></li>
+              <li><a href="/amiradnan"> Generation</a></li>
+              <li class="divider"></li>
+              <li><a href="/amiradnan"> Service</a></li>
+              <li class="divider"></li>
+              <li><a href="/amiradnan"> Khaas</a></li>
+            </ul>
+          </li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
 
-  					<a href="sign-in.html" class="dropdown-toggle" data-toggle="dropdown">
-  						<!-- <img src="Images/account_img.png" class="profile-image img-circle"> -->
+          <li class="dropdown">
+
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- <img src="Images/account_img.png" class="profile-image img-circle"> -->
               <i class="fa fa-user default" aria-hidden="true"></i> User management
-               <b class="caret"></b>
-             </a>
-              <ul class="dropdown-menu">
-  							<li><a href="/signin"><i class="fa fa-cog"></i> Sign-in</a></li>
-  							<li class="divider"></li>
-  							<li><a href="/signup"><i class="fa fa-sign-out"></i> Sign-out</a></li>
-  						</ul>
-  						</li
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/signin"><i class="fa fa-cog"></i> Sign-in</a></li>
+              <li class="divider"></li>
+              <li><a href="/signup"><i class="fa fa-sign-out"></i> Sign-out</a></li>
+            </ul>
+          </li>
 
-  					</ul>
-  				</div><!-- /.navbar-collapse -->
-  			</div><!-- /.container-fluid -->
-  		</nav>
-  	</section> <!-- nav bar ends here -->
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+</section>
+<!-- nav bar ends here -->

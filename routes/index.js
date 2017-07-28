@@ -49,6 +49,17 @@ router.get('/khaadi', function(req, res, next) {
 
 });
 
+// route for Amir_adnan brand page
+router.get('/amiradnan', function(req, res, next) {
+
+  aa.find(function(err, docs){
+
+      res.render('brand/amiradnan', { title: 'Amir Adnan', aas: docs });
+
+  });
+
+});
+
 
 
 module.exports = router;

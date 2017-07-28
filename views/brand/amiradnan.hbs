@@ -4,13 +4,13 @@
 
     <form action="" class="form-area">
 
-      <div id="img_carousel" class="item active"  >
+      <div id="img_carousel" class="item active">
 
 
 
-        {{# each khaadis}}
-        <div id="img_div" class="image-container">
-          <a href="{{this.link}}" target="_blank"><img class="d-block img-fluid" src="{{this.image}}" alt="carousel images">
+        {{# each aas}}
+          <div id="img_div" class="image-container">
+            <a href="{{this.link}}" target="_blank"><img class="d-block img-fluid" src="{{this.image}}" alt="carousel images">
           <div class="sale"><img src="Images/sale-img.png" alt="image"><h2>{{this.sale}}</h2>
           </div>
           <div class="after">
@@ -22,8 +22,8 @@
             </div>
           </div>
         </a></div>
-        {{/each}}
-  </div>
+          {{/each}}
+      </div>
 
     </form>
   </div>

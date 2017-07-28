@@ -7,7 +7,7 @@ body{
 	border-radius: 0px;
 	margin-bottom: 0px;
 	border: none;
-	height: 60px;
+	/*height: 60px;*/
 	font-size: 12px;
 	padding: 5px  5px;
 
@@ -64,7 +64,7 @@ body{
 .navbar-collapse, .collapse ,.in{
 
     background-color: #526f30;
-    position: f;
+
 }
 
 .dropdown .open>a{
@@ -334,6 +334,9 @@ footer{
 	letter-spacing: default;
 	margin-top: -50px;
 	text-align: center;
+	/*position: absolute;*/
+	overflow:hidden;
+	width: 100%;
 
 }
 
