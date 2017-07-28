@@ -1,0 +1,30 @@
+<section>
+
+  <div class="contact-form col-md-11 col-sm-8">
+
+    <form action="" class="form-area">
+
+      <div id="img_carousel" class="item active"  >
+
+
+
+        {{# each khaadis}}
+        <div id="img_div" class="image-container">
+          <a href="#"><img class="d-block img-fluid" src="{{this.image}}" alt="carousel images">
+          <div class="sale"><img src="Images/sale-img.png" alt="image"><h2>{{this.sale}}</h2>
+          </div>
+          <div class="after">
+            <div class="after_internal">
+              <h2>Details</h2>
+              <p>Name: {{this.name}}</p>
+              <p>Sale Price: {{this.sale_price}}</p>
+              <p>Original Price: {{this.original_price}}</p>
+            </div>
+          </div>
+        </a></div>
+        {{/each}}
+  </div>
+
+    </form>
+  </div>
+</section>

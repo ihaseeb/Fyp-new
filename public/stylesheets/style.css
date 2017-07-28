@@ -1,8 +1,426 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body{
+	font-family:  arial;
 }
 
-a {
-  color: #00B7FF;
+.navbar{
+	background: #526f30;
+	border-radius: 0px;
+	margin-bottom: 0px;
+	border: none;
+	height: 60px;
+	font-size: 12px;
+	padding: 5px  5px;
+
+}
+
+.container{
+	margin-right: 0px;
+}
+
+
+
+.navbar-default .navbar-nav>li>a{
+	color: white;
+}
+
+.navbar-nav>li>a.profile-image {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+.img-circle{
+	width: 25px;
+	height: 25px;
+
+	vertical-align:;
+}
+
+.dropdown-menu{
+	background-color: #526f30;
+}
+
+.dropdown-menu>li>a{
+
+	color: white;
+}
+
+.dropdown-menu>li>a:hover{
+
+	color: #262626;
+	background-color: #526f30;
+}
+
+.navbar-default .navbar-nav>.open>a,
+ 	.navbar-default .navbar-nav>.open>a:focus,
+ 		.navbar-default .navbar-nav>.open>a:hover {
+    color: #262626;
+    background-color: #526f30;
+    border-bottom: 5px;
+    border-color: white;
+    position: relative;
+}
+
+
+.navbar-collapse, .collapse ,.in{
+
+    background-color: #526f30;
+    position: f;
+}
+
+.dropdown .open>a{
+	color: white;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+     color: white;
+
+}
+
+#iconarea{
+
+	width: 100%;
+	height: 300px;
+	background: #658b3b;
+}
+
+#imglogo{
+	width: 100px;
+	height: 100px;
+	padding: 20px 0px 0px 20px;
+	vertical-align:;
+}
+
+#heading{
+	color: white;
+	font-size: 40px;
+	display: inline-block;
+	vertical-align: middle;
+	padding-top: 20px;
+	padding-left: 10px;
+}
+
+
+
+.post{
+	margin-top: -160px;
+}
+/*
+#Brand-heading{
+	background: #526f30;
+	color: white;
+	width: 750px;
+	margin:auto;
+	height: 30px;
+	padding-top: 4px;
+	padding-bottom: 10px;
+	margin-left: 14px;
+	margin-top: -10px;
+}
+ */
+/* #img-area{
+	margin-left: 20px;
+	padding-top: 10px;
+
+}
+#scrol{
+	overflow: scroll;
+}
+
+#img-area>li{
+	text-decoration: none;
+	display: inline;
+	padding: 15px;
+	margin: 1em;
+}
+
+#img-area>li>img{
+	width: 117px;
+	height: 176px;
+	 box-shadow: 0 0 3px 0 #000;
+}
+ */
+
+/* everything beyond this point is experimental :P */
+
+
+.carousel {
+	width:1230px;
+	margin:auto;
+	height: 330px;
+	box-shadow: 0px 3px 10px 0px #888888;
+	background-color: #e6e7e8;
+	overflow: hidden;
+	float: none;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	left: auto;
+	z-index: auto
+}
+
+
+
+#img_carousel{
+	padding: 2% 0 0 10%;
+	margin-left: -70px;
+	/*margin-top: -100px;*/
+}
+
+#carousel-item{
+	margin: 0 auto;
+}
+#car_inner{
+	max-width: 6500px;
+	min-width: 250px;
+	overflow: hidden;
+	display: flex;
+}
+#Brand_headings{
+	background: #526f30;
+	color: white;
+	width:1230px;
+	margin:auto;
+	height: 30px;
+	padding-top: 0px;
+	border-radius: 2px;
+	padding-left: 10px;
+}
+h4{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+.brand-logo{
+	margin-top:4px;
+	height: 15px;
+	right: 0px;
+
+}
+#b-heading{
+	display: inline-block;
+	margin-top: -7px;
+
+}
+#b-logo{
+	display: inline-block;
+	float: right;
+	margin-right: 20px;
+}
+#div1{
+	margin-top: -180px;
+
+	padding-bottom: 20px;
+}
+
+#div-styling{
+		padding-bottom: 20px;
+		overflow: hidden;
+}
+
+
+#control_c.left.carousel-control{
+	width: 30px;
+	height:  330px;
+}
+
+#control_c.right.carousel-control{
+	width: 30px;
+	height:  330px;
+
+	}
+#control_c{
+	opacity: 0.5;
+}
+
+#control_c:hover{
+	opacity: 1;
+}
+
+
+
+#img_div{
+	display: inline-block;
+	padding: 20px;
+	margin-left: -22px;
+	margin-top: -10px;
+
+}
+.img-fluid {
+	 border-radius: 2px;
+}
+#img_div>img{
+	width: 170px;
+	height: 250px;
+	box-shadow: 0 0 3px 0 #000;
+	position: relative;
+}
+
+#img_div>a>img{
+	width: 170px;
+	height: 250px;
+	box-shadow: 0 0 3px 0 #000;
+}
+
+.d-block{
+	width: 170px;
+	height: 250px;
+	box-shadow: 0 0 3px 0 #000;
+	position: relative;
+	background: black;
+}
+.see-more{
+	margin-right:  -1200px;
+	margin-left:  1010px;
+	margin-top: 24px;
+	display: inline-block;
+	z-index: 2000;
+	opacity: 0;
+}
+.see-more:hover{
+
+	opacity: 0.9;
+}
+
+.image-container{
+	position: relative;
+	margin-left: 25px;
+}
+
+.image-container .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 170px;
+    height: 250px;
+    display: none;
+    color: #FFF;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 2px;
+}
+.image-container:hover .after {
+    display:inline-block;
+    background: rgba(0, 0, 0, .6);
+    transition: all 0.6s ease-in-out 0s;
+}
+
+.image-container .sale{
+    display: block;
+    position: relative;
+    margin-top: px;
+    margin-left: px;
+
+}
+.image-container .sale>img{
+    width: 51px;
+    height: 30px;
+    margin-top: -492px;
+    opacity: .9;
+    border-radius: 2px;
+}
+.sale>h2{
+	position: absolute;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 22px;
+	margin-top: -246px;
+	margin-left: -47px;
+	color: white;
+}
+footer{
+	background: #658b3b;
+	height: 250px;
+	line-height: 200px;
+	color: white;
+	letter-spacing: default;
+	margin-top: -50px;
+	text-align: center;
+
+}
+
+footer>a>img{
+	width: 50px;
+}
+
+footer>div>a{
+	color: white;
+}
+
+footer>div>a:hover{
+	color: white;
+}
+
+#footer-s{
+	margin-top: -150px;
+}
+
+
+.contact-form{
+	background-color: #e6e7e8;
+	/*width: 1200px;*/
+	margin: auto;
+	position: relative;
+	margin-top: -160px;
+	border-radius: 3px;
+	padding: 20px;
+	color: ;
+	/*height: 550px;*/
+	float: none;
+}
+
+.form-area{
+	width: 90%;
+	margin: auto;
+}
+
+.form-control{
+	width: 85%;
+
+	margin-left: 20px;
+}
+#email{
+
+}
+#c-heading{
+	background: #526f30;
+	color: white;
+	height: 30px;
+	padding-top: 0px;
+	border-radius: 2px;
+	margin-top: -58px;
+	margin-right: -20px;
+	margin-bottom: 20px;
+	margin-left: -20px;
+}
+.btn{
+	width: 120px;
+	margin-left: 20px;
+	background: #658b3b;
+	border-color: #526f30;
+	font-size: 16px;
+}
+.setting{
+	width: 150px;
+
+	margin-left: 20px;
+}
+.btn:hover{
+	background: #526f30;
+	border-color: #658b3b;
+}
+.btn:focus{
+	background: #526f30;
+	border-color: #658b3b;
+}
+.contact-form textarea{
+	resize: none;
+}
+
+.after_internal{
+	font-size: 15px;
+	color: white;
+	padding-top: 20px;
+	padding-left: 10px;
+}
+.after_internal h2{
+	font-size: 20px;
 }
