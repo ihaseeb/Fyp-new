@@ -1,25 +1,21 @@
-
 <section>
 
   <div class="contact-form col-md-10 col-sm-8">
 
     <form action="" class="">
 
-      <div id="img_carousel" class="item ">
+      <div id="img_carousel" class="item active"  >
 
 
 
-        {{# each aas}}
-          <div id="" class="image-container img_div">
-            <a href="{{this.link}}" target="_blank"><img class="d-block img-fluid" src="{{this.image}}" alt="carousel images">
+        {{# each generations}}
+        <div id="" class="image-container img_div">
+          <a href="{{this.link}}" target="_blank"><img class="d-block img-fluid" src="{{this.image}}" alt="carousel images">
           <div class="sale"><img src="Images/sale-img.png" alt="image">
 
             <h2>{{this.sale}}</h2>
-            <!-- <script type="text/javascript">
-              var sale = {{this.sale}}
-            </script> -->
-          </div>
 
+          </div>
           <div class="after">
             <div class="after_internal">
               <h2>Details</h2>
@@ -29,8 +25,9 @@
             </div>
           </div>
         </a></div>
-          {{/each}}
-      </div>
+
+        {{/each}}
+  </div>
 
     </form>
   </div>

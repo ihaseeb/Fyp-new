@@ -1,10 +1,7 @@
 var Xray = require('x-ray');
 var request = require('request');
 var fs = require('fs');
-var i = 0;
 var x = new Xray();
-var khaadi = [];
-var amira= [];
 var mongoose = require('mongoose');
 
 var Khaadi = require('../models/khaadi');
@@ -28,15 +25,10 @@ db.on('connect', () => {
 db.on('error', e => console.log('error', e));
 
 
-//mongoose schema defined here
-
 
 ////////////////////////// Khaadi starts here....///////////////////////////////
 //
-// // mongoose model for khaadi defined here
-// var khaadi = mongoose.model('khaadi', kappasSchema);
-//
-//xray scrapping for khaadi starts here
+// xray scrapping for khaadi starts here
 x('https://www.khaadionline.com/pk/sale.html?limit=60', '.products_grid .product-grid',[{
 
   name:'.product-name a',
@@ -52,6 +44,26 @@ if ( !error ) {
 
 for(var i=0; i< khd.length; i++){
 
+  var cat = "";
+  var str = khd[i].name;
+  if (str.toLowerCase().indexOf("shirt") >= 0|| str.toLowerCase().indexOf("kurta") >= 0){
+    cat="shirt";
+  }
+
+  else
+    if (str.toLowerCase().indexOf("shalwar") >= 0|| str.toLowerCase().indexOf("pant") >= 0|| str.toLowerCase().indexOf("tight") >= 0){
+      cat="pant";
+    }
+
+  else
+    if (str.toLowerCase().indexOf("necklace")>= 0 || str.toLowerCase().indexOf("ring") >= 0 || str.toLowerCase().indexOf("ear") >= 0){
+      cat="jewellery";
+    }
+
+  else
+    {  cat="dress";
+    }
+
   var khaadidb = new Khaadi({
 
     name: khd[i].name,
@@ -59,7 +71,8 @@ for(var i=0; i< khd.length; i++){
     original_price: khd[i].original_price,
     sale: khd[i].sale,
     image: khd[i].image,
-    link: khd[i].link
+    link: khd[i].link,
+    category:cat
   });
 
   khaadidb.save((err, doc) => {
@@ -89,9 +102,6 @@ else{
 // ///////////////////////// Amir adnan starts here.../////////////////////////////
 //
 //
-// //mongoose model for amir-adnan defind here
-// var amir_adnan = mongoose.model('amir_adnan', kappasSchema);
-//
 x('http://www.amiradnan.com/shalwar-kameez-kurta-sale', '.products .col-md-3',[{
   name:'.product-name h4 a',
   sale_price:'.product-price .new_price',
@@ -102,28 +112,68 @@ x('http://www.amiradnan.com/shalwar-kameez-kurta-sale', '.products .col-md-3',[{
 }])(function(error, result){
   if ( !error ) {
 
+
   for(var i=0; i< result.length; i++){
 
-    var amir_adnandb = new amir_adnan({
+    var strsale = "";
+    var tempsale = "";
+
+    if (typeof result[i].sale == 'string') {
+      strsale =result[i].sale;
+      tempsale = strsale.split(" ", 1);
+    }
+    else
+    if (typeof result[i].sale !== 'string') {
+      tempsale = "10%";
+    }
+
+
+
+    var tempsale = strsale.split(" ", 1);
+
+    var cat = "";
+    var str = result[i].name;
+    if (str.toLowerCase().indexOf("shirt") >= 0|| str.toLowerCase().indexOf("kurta") >= 0){
+      cat="shirt";
+    }
+
+    else
+      if (str.toLowerCase().indexOf("shalwar") >= 0|| str.toLowerCase().indexOf("pant") >= 0|| str.toLowerCase().indexOf("tight") >= 0){
+        cat="pant";
+      }
+
+    else
+      if (str.toLowerCase().indexOf("necklace")>= 0 || str.toLowerCase().indexOf("ring") >= 0){
+        cat="jewellery";
+      }
+
+    else
+      {
+        cat="dress";
+      }
+
+
+    var amiradnandb = new amir_adnan({
 
       name: result[i].name,
     	sale_price: result[i].sale_price,
       original_price: result[i].original_price,
-      sale: result[i].sale,
+      sale: tempsale,
       image: result[i].image,
-      link: result[i].link
+      link: result[i].link,
+      category: cat
     });
 
-    amir_adnandb.save((err, doc) => {
-    	if (err) { console.log('err', err)}
+    // console.log(result[i].sale);
+
+    amiradnandb.save((err, doc) => {
+    	if (err) { console.log('err')}
     		else {
         }
   });
-  var j=i+1;
-  if(j==result.length){
-    console.log('i:'+ i + ' and result: '+ result.length );
 
-  }
+
+
 
   }  //for loop end here
   console.log('Amir adnan data saved to database');
@@ -150,47 +200,112 @@ x('http://www.amiradnan.com/shalwar-kameez-kurta-sale', '.products .col-md-3',[{
 ///////////////////////// generation starts here...///////////////////////////////
 
 
-//mongoose model for generation defind here
-//var generation = mongoose.model('generation', kappasSchema);
+x('http://www.generation.com.pk/sale', '.products-grid .item',[{
+  name:'.product-info .product-name a',
+  sale_price:'.product-info .price-box .special-price .price',
+  original_price:'.product-info .price-box .old-price .price',
+  image:('.hideableHover img@src'),
+  link:('.actions a@href')
+}])(function(error, result){
+  if ( !error ) {
 
-// x('http://www.generation.com.pk/sale', 'products-grid .item',[{
-//   name:'.product-info .product-name h2 a',
-//   sale_price:'.product-info .price-box .special-price .price',
-//   original_price:'.product-info .price-box .old-price .price',
-//   sale:'',
-//   image:('.shop-item .overlay-wrapper a .pro-img img@src')
-// }])(function(error, chen){
-//   if ( !error ) {
-// console.log(chen.length);
-//   for(var i=0; i< chen.length; i++){
-//
-//     var generationdb = new Product({
-//       id:i+1,
-//       name: chen[i].name,
-//     	sale_price: chen[i].sale_price,
-//       original_price: chen[i].original_price,
-//       sale: chen[i].sale,
-//       image: chen[i].image
-//     });
-//
-//     generationdb.save((err, doc) => {
-//     	if (err) { console.log('err', err)}
-//     		else {
-//         }
-//   });
-//
-//   }  //for loop end here
-//   console.log('generation data saved to database');
-//
-//   //drop database - following code is added to avoid duplicate data from scrapping
-//   // db.collection("generations").drop(function(err, delOK) {
-//   //     if (err) throw err;
-//   //     if (delOK) console.log("generation duplicate data deleted");
-//   //   });//drop database ends here
-//
-//   }//if(!error) ends here
-//
-//   else{
-//     console.log('Error found : ', error);
-//   }
-// });
+
+  for(var i=0; i< result.length; i++){
+
+    // Original price parsing for sale calculation
+    var org_price = result[i].original_price.split(" ");
+    var org_price_int = org_price[1].split(",");
+    var org_price_parse1 = parseInt(org_price_int[0]);
+    var org_price_parse2 = parseInt(org_price_int[1]);
+
+    var org_decimal_price = 0;
+    var final_org= 0;
+
+    for(var j=0;j<org_price_parse1;j++ ){
+      org_decimal_price = org_price_parse1*1000;
+    }
+    final_org = org_decimal_price+org_price_parse2;
+
+
+    // sale price parsing for sale calculation
+    var sale_price = result[i].sale_price.split(" ");
+    var sale_price_int = sale_price[1].split(",");
+    var sale_price_parse1 = parseInt(sale_price_int[0]);
+    var sale_price_parse2 = parseInt(sale_price_int[1]);
+
+    var sale_decimal_price = 0;
+    var final_sale= 0;
+
+    for(var k=0;k<sale_price_parse1;k++ ){
+      sale_decimal_price = sale_price_parse1*1000;
+    }
+    final_sale = sale_decimal_price+sale_price_parse2;
+
+
+    var strsale = (((final_org)-(final_sale))/final_org)*100;
+
+
+// category
+    var cat = "";
+    var str = result[i].name;
+    if (str.toLowerCase().indexOf("shirt") >= 0|| str.toLowerCase().indexOf("kurt") >= 0  || str.toLowerCase().indexOf("top") >= 0){
+      cat="shirt";
+    }
+
+    else
+      if (str.toLowerCase().indexOf("shalwar") >= 0|| str.toLowerCase().indexOf("pant") >= 0|| str.toLowerCase().indexOf("tight") >= 0){
+        cat="pant";
+      }
+
+    else
+      if (str.toLowerCase().indexOf("necklace")>= 0 || str.toLowerCase().indexOf("ring") >= 0){
+        cat="jewellery";
+      }
+
+    else
+      {
+        cat="dress";
+      }
+
+
+    var generationdb = new generation({
+
+      name: result[i].name,
+    	sale_price: result[i].sale_price,
+      original_price: result[i].original_price,
+      sale: Math.floor(strsale)+"%",
+      image: result[i].image,
+      link: result[i].link,
+      category: cat
+    });
+
+    // console.log(result[i].sale);
+
+    generationdb.save((err, doc) => {
+    	if (err) { console.log('err',err)}
+    		else {
+        }
+  });
+
+
+
+
+  }  //for loop end here
+  console.log('Generation data saved to database');
+
+  //drop database - following code is added to avoid duplicate data from scrapping
+  // if(db.collection('amir_adnans').find()=true){
+  db.collection("generations").drop(function(err, delOK) {
+      if (err) throw err;
+      if (delOK) console.log("generations duplicate data deleted");
+    });//drop database ends here
+  // }
+  // else{
+  //   console.log("no database exit atm");
+  // }
+  }//if(!error) ends here
+
+  else{
+    console.log('Error found : ', error);
+  }
+});

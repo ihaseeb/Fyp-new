@@ -43,6 +43,9 @@ body{
 
 	color: white;
 }
+.navbar-nav>li>.dropdown-menu{
+	z-index: 3000;
+}
 
 .dropdown-menu>li>a:hover{
 
@@ -254,7 +257,29 @@ h4{
 	position: relative;
 }
 
-#img_div>a>img{
+.img_div>a>img{
+	width: 170px;
+	height: 250px;
+	box-shadow: 0 0 3px 0 #000;
+}
+
+
+.img_div{
+	display: inline-block;
+	padding: 20px;
+	/*margin-left: -22px;*/
+	margin-top: -10px;
+
+}
+
+.img_div>img{
+	width: 170px;
+	height: 250px;
+	box-shadow: 0 0 3px 0 #000;
+	position: relative;
+}
+
+.img_div>a>img{
 	width: 170px;
 	height: 250px;
 	box-shadow: 0 0 3px 0 #000;
@@ -274,6 +299,8 @@ h4{
 	display: inline-block;
 	z-index: 2000;
 	opacity: 0;
+	text-align: center;
+
 }
 .see-more:hover{
 
@@ -337,8 +364,26 @@ footer{
 	/*position: absolute;*/
 	overflow:hidden;
 	width: 100%;
+	/*bottom: 0;
+	 margin: 0 auto;*/
+
+	 /*min-height: 70%;
+    min-height: -webkit-calc(100% - 186px);
+    min-height: -moz-calc(100% - 186px);
+    min-height: calc(100% - 186px);*/
 
 }
+
+#wrapper {
+	 min-height: 100%;
+	 height: auto !important;
+	 height: 100%;
+	 margin: 0 auto -30px;
+ }
+
+ #bottom, #push {
+	 height:30px;
+ }
 
 footer>a>img{
 	width: 50px;
@@ -368,6 +413,7 @@ footer>div>a:hover{
 	color: ;
 	/*height: 550px;*/
 	float: none;
+	z-index: 2000;
 }
 
 .form-area{
@@ -426,4 +472,10 @@ footer>div>a:hover{
 }
 .after_internal h2{
 	font-size: 20px;
+}
+.see-more .after .after_internal{
+	font-size: 15px;
+	color: white;
+	padding-top: 60px;
+	padding-left: 0px;
 }

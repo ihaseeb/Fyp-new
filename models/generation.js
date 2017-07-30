@@ -12,4 +12,4 @@ var kappasSchema = new Schema({
 	category:{type: String}
 });
 
-module.exports = mongoose.model('Khaadi', kappasSchema);
+module.exports = mongoose.model('Generation', kappasSchema);
