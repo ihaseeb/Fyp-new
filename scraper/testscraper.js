@@ -37,6 +37,7 @@ x('http://www.generation.com.pk/sale', '.products-grid .item',[{
 }])(function(error, result){
   if ( !error ) {
 
+    console.log(result);
 
   for(var i=0; i< result.length; i++){
 
