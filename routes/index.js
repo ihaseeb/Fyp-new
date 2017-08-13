@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+
 var Khaadi = require('../models/khaadi');
 var aa = require('../models/amir_adnan');
 var generation =  require('../models/generation');
+
 
 // route for home page
 router.get('/', function(req, res, next) {
@@ -41,20 +43,7 @@ router.get('/about-us', function(req, res, next) {
   res.render('about-us', { title: 'About Us' });
 });
 
-// route for signin page
-router.get('/signin', function(req, res, next) {
-  res.render('user/signin', { title: 'Sign in' });
-});
 
-// route for signup page
-router.get('/signup', function(req, res, next) {
-  res.render('user/signup', { title: 'Sign up' });
-});
-
-// route for profile page
-router.get('/profile', function(req, res, next) {
-  res.render('user/profile', { title: 'Profile' });
-});
 
 // route for khaadi brand page
 router.get('/khaadi', function(req, res, next) {
@@ -88,6 +77,7 @@ router.get('/generation', function(req, res, next) {
   });
 
 });
+
 
 
 
