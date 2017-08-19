@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var List = require('../models/list');
 
 var Khaadi = require('../models/khaadi');
 var aa = require('../models/amir_adnan');
@@ -38,10 +39,6 @@ router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'Contact Us' });
 });
 
-// route for about-us page
-router.get('/about-us', function(req, res, next) {
-  res.render('about-us', { title: 'About Us' });
-});
 
 
 
@@ -78,6 +75,26 @@ router.get('/generation', function(req, res, next) {
 
 });
 
+router.get('/add-to-list/:id', function(req, res, next) {
+  var productId = req.params.id;
+  var list = new List(req.session.list ? req.session.list : {items: {}});
+
+  Khaadi.findById(productId, function(err, product) {
+    if(err) {
+      return res.redirect('/');
+    }
+    list.add(product, product.id);
+    req.session.list = list;
+    console.log(req.session.list);
+    res.redirect('/khaadi');
+  });
+});
+
+router.get('/clear-list', function(req, res, next) {
+
+    req.session.list = null;
+    res.redirect('/');
+  });
 
 
 

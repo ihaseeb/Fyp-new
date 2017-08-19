@@ -38,25 +38,34 @@
               <li><a href="#"> Khaas</a></li>
             </ul>
           </li>
-          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/user/wish-list">WishList
+              <!-- <span class="badge">{{session.list.totalQty}}</span> -->
+          </a>
+          </li>
           <li><a href="/contact">Contact Us</a></li>
 
           <li class="dropdown">
 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- <img src="Images/account_img.png" class="profile-image img-circle"> -->
+              {{#if login}}
+              <i class="fa fa-user default" aria-hidden="true"></i> {{user.email}}
+              {{else}}
               <i class="fa fa-user default" aria-hidden="true"></i> User management
+              {{/if}}
+
               <b class="caret"></b>
+
             </a>
             <ul class="dropdown-menu">
               {{#if login}}
-              <li><a href="/user/profile"><i class="fa fa-cog"></i> User Account</a></li>
-              <li class="divider"></li>
-              <li><a href="/user/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                <li><a href="/user/profile"><i class="fa fa-cog"></i> User Account</a></li>
+                <li class="divider"></li>
+                <li><a href="/user/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
               {{else}}
-              <li><a href="/user/signin"><i class="fa fa-cog"></i> Sign in</a></li>
-              <li class="divider"></li>
-              <li><a href="/user/signup"><i class="fa fa-sign-out"></i> Sign up</a></li>
+                <li><a href="/user/signin"><i class="fa fa-cog"></i> Log in</a></li>
+                <li class="divider"></li>
+                <li><a href="/user/signup"><i class="fa fa-sign-out"></i> Sign up</a></li>
               {{/if}}
 
             </ul>

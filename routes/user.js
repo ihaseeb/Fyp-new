@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 var csrf = require('csurf');
 var passport = require('passport');
+var List = require('../models/list');
+
+var Khaadi = require('../models/khaadi');
+var aa = require('../models/amir_adnan');
+var generation =  require('../models/generation');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
@@ -10,6 +15,15 @@ router.use(csrfProtection);
 router.get('/profile',isLoggedIn, function(req, res, next) {
   res.render('user/profile', { title: 'Profile' });
 });
+// route for wish-list page
+router.get('/wish-list',isLoggedIn, function(req, res, next) {
+if(!req.session.list){
+  return res.render('user/wish-list',  { title: 'WishList', khaadis: null });
+}
+  var list = new List(req.session.list);
+  res.render('user/wish-list', { title: 'WishList', khaadis: list.generateArray()});
+});
+
 
 router.get('/logout', function(req, res, next){
     req.logout();
@@ -54,7 +68,7 @@ function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){
     return next();
   }
-  res.redirect('/');
+  res.redirect('/user/signin');
 }
 
 function notLoggedIn(req, res, next){
