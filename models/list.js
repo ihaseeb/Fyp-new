@@ -1,7 +1,7 @@
 module.exports = function list(oldList) {
-    this.items = oldList.items;
-    this.totalQty = oldList.totalQty;
-    this.totalPrice = oldList.totalPrice;
+    this.items = oldList.items || {};
+    this.totalQty = oldList.totalQty || 0;
+    this.totalPrice = oldList.totalPrice || 0;
 
     this.add = function(item, id) {
       var storedItem = this.items[id];
@@ -12,7 +12,13 @@ module.exports = function list(oldList) {
       storedItem.sale_price = storedItem.item.sale_price ;
       this.totalQty++;
       this.totalPrice += storedItem.sale_price;
-    }
+    };
+
+    this.removeItem = function(id) {
+        this.totalQty -= this.items[id].qty;
+        this.totalPrice -= this.items[id].price;
+        delete this.items[id];
+    };
 
     this.generateArray = function() {
       var arr = [];

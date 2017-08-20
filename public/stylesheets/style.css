@@ -363,7 +363,28 @@ footer>div>a:hover {
   border-radius: 3px;
   padding: 20px;
   color: ;
-  /*height: 550px;*/
+  min-height: 450px;
+  float: none;
+  z-index: 2000;
+}
+a h4{
+  text-decoration: none;
+  color: white;
+}
+a:focus, a:hover {
+    color: ;
+    text-decoration: none;
+}
+.contact-form-1 {
+  background-color: #e6e7e8;
+  /*width: 1200px;*/
+  margin: auto;
+  position: relative;
+  margin-top: -160px;
+  border-radius: 3px;
+  padding: 20px;
+  color: ;
+  /*height: 450px;*/
   float: none;
   z-index: 2000;
 }
@@ -371,6 +392,12 @@ footer>div>a:hover {
 .form-area {
   width: 90%;
   margin: auto;
+  padding-top: 100px;
+}
+.form-area-1 {
+  width: 90%;
+  margin: auto;
+
 }
 
 .form-control {

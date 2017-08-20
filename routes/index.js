@@ -3,6 +3,7 @@ var router = express.Router();
 var List = require('../models/list');
 
 var Khaadi = require('../models/khaadi');
+var khaas = require('../models/khaas');
 var aa = require('../models/amir_adnan');
 var generation =  require('../models/generation');
 
@@ -25,7 +26,14 @@ router.get('/', function(req, res, next) {
               res.render('Error found');
             }
             else{
-            res.render('brand/index', { title: 'Home', aas: aa_result, khaadis: khaadi_result, generations: generation_result });
+              khaas.find(function(err, khaas_result){
+                if(err){
+                  res.render('Error found');
+                }
+                else{
+                res.render('brand/index', { title: 'Home', aas: aa_result, khaadis: khaadi_result, generations: generation_result, khaass: khaas_result });
+              }
+          });
           }
       });
       }
@@ -75,6 +83,17 @@ router.get('/generation', function(req, res, next) {
 
 });
 
+// route for Generation brand page
+router.get('/khaas', function(req, res, next) {
+
+  khaas.find(function(err, docs){
+
+      res.render('brand/khaas', { title: 'Khaas', khaass: docs });
+
+  });
+
+});
+
 router.get('/add-to-list/:id', function(req, res, next) {
   var productId = req.params.id;
   var list = new List(req.session.list ? req.session.list : {items: {}});
@@ -95,6 +114,15 @@ router.get('/clear-list', function(req, res, next) {
     req.session.list = null;
     res.redirect('/');
   });
+
+  router.get('/remove/:id', function(req, res, next) {
+    var productId = req.params.id;
+    var list = new List(req.session.list ? req.session.list : {items: {}});
+
+  list.removeItem(productId);
+  req.session.list = list;
+  res.redirect('/user/wish-list');
+});
 
 
 

@@ -2,7 +2,7 @@
 
   <div class="contact-form col-md-8 col-sm-8">
   <div id="c-heading"><h4>WishList</h4></div>
-    <form action="" class="form-area">
+    <form action="" class="form-area-1">
       {{#if khaadis}}
       <div class="row">
         <div class="col-sm-10 col-md-10 col-md-offset-1">
@@ -11,7 +11,8 @@
             <li class="list-group-item">
               <strong>{{this.item.name}}</strong>
               <span class="label label-success">{{this.item.sale_price}}</span>
-                <button type="button" name="button" class="btn btn-danger btn-xs btn-remove">Remove item</button>
+
+                <a href="/remove/{{this.item._id}}" class="btn btn-danger btn-xs btn-remove" role="button">Remove item</a>
 
                 <a href="{{this.item.link}}" class="btn btn-primary btn-xs btn-check" role="button" target="_blank">Checkout item</a>
 
