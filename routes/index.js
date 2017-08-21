@@ -42,10 +42,6 @@ router.get('/', function(req, res, next) {
   });
 });
 
-// route for contact-us page
-router.get('/contact', function(req, res, next) {
-  res.render('contact', { title: 'Contact Us' });
-});
 
 
 
@@ -94,7 +90,7 @@ router.get('/khaas', function(req, res, next) {
 
 });
 
-router.get('/add-to-list/:id', function(req, res, next) {
+router.get('/add-to-list-khaadi/:id', function(req, res, next) {
   var productId = req.params.id;
   var list = new List(req.session.list ? req.session.list : {items: {}});
 
@@ -106,6 +102,51 @@ router.get('/add-to-list/:id', function(req, res, next) {
     req.session.list = list;
     console.log(req.session.list);
     res.redirect('/khaadi');
+  });
+});
+
+router.get('/add-to-list-aa/:id', function(req, res, next) {
+  var productId = req.params.id;
+  var list = new List(req.session.list ? req.session.list : {items: {}});
+
+  aa.findById(productId, function(err, product) {
+    if(err) {
+      return res.redirect('/');
+    }
+    list.add(product, product.id);
+    req.session.list = list;
+    console.log(req.session.list);
+    res.redirect('/amiradnan');
+  });
+});
+
+router.get('/add-to-list-gen/:id', function(req, res, next) {
+  var productId = req.params.id;
+  var list = new List(req.session.list ? req.session.list : {items: {}});
+
+  generation.findById(productId, function(err, product) {
+    if(err) {
+      return res.redirect('/');
+    }
+    list.add(product, product.id);
+    req.session.list = list;
+    console.log(req.session.list);
+    res.redirect('/generation');
+  });
+});
+
+router.get('/add-to-list-khaas/:id', function(req, res, next) {
+  var productId = req.params.id;
+  var list = new List(req.session.list ? req.session.list : {items: {}});
+
+  khaas.findById(productId, function(err, product) {
+    if(err) {
+      return res.redirect('/');
+    }
+    list.add(product, product.id);
+    req.session.list = list;
+    console.log(req.session.list);
+    res.redirect('/khaas');
   });
 });
 

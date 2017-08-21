@@ -43,7 +43,7 @@ router.get('/signin', function(req, res, next) {
 });
 
 router.post('/signin', passport.authenticate('local.signin',{
-  successRedirect: '/user/profile',
+  successRedirect: '/',
   failureRedirect: '/user/signin',
   failureFlash: true
 }));
@@ -55,8 +55,20 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post('/signup', passport.authenticate('local.signup',{
-  successRedirect: '/user/profile',
+  successRedirect: '/',
   failureRedirect: '/user/signup',
+  failureFlash: true
+}));
+
+// route for contact-us page
+router.get('/contact', function(req, res, next) {
+  var messages = req.flash('error');
+  res.render('user/contact', { title: 'Contact Us', csrfToken: req.csrfToken(),  messages: messages, hasErrors: messages.length > 0 });
+});
+
+router.post('/contact', passport.authenticate('local.contact',{
+  successRedirect: '/',
+  failureRedirect: '/user/contact',
   failureFlash: true
 }));
 

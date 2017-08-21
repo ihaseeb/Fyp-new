@@ -1,5 +1,6 @@
 var passport = require('passport');
 var User  = require('../models/user');
+var Contact  = require('../models/contact');
 var LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser(function(user, done){
@@ -76,4 +77,45 @@ passport.use('local.signin', new LocalStrategy({
     }
     return done(null, user);
     });
+}));
+
+
+
+passport.use('local.contact', new LocalStrategy({
+  usernameField: 'email',
+  subjectField: 'subject',
+  messageField: 'message',
+  passReqToCallback: true
+}, function(req, email, subject, message, done){
+  req.checkBody('email','Invalid email').notEmpty().isEmail();
+  req.checkBody('subject','Invalid subject').notEmpty();
+  req.checkBody('message','Invalid message').notEmpty();
+
+console.log("email is : ",email);
+console.log("subject is : ",subject);
+console.log("message is : ",message);
+    var errors = req.validationErrors();
+    if(errors){
+      var messages = [];
+      errors.forEach(function(error){
+        messages.push(error.msg);
+      });
+      return done(null, false, req.flash('error', messages));
+    };
+
+
+
+    var newMessage = new Contact();
+
+        newMessage.email = email;
+        newMessage.subject = subject;
+        newMessage.message = message;
+        newMessage.save(function(err, result){
+          if(err){
+            return done(err);
+          }
+          return done(null, newMessage);
+        });
+
+
 }));
