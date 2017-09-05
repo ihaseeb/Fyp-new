@@ -33,30 +33,37 @@
         <hr>
 
         {{# each khaadis}}
-          <div id="" class="image-container img_div">
-            <a href="{{this.link}}" target="_blank"><img class="d-block img-fluid" src="{{this.image}}" alt="image">
-          <div class="sale"><img src="Images/sale-img.png" alt="image">
+        {{#customif expected = 'jewellery' val=category}}
 
-            <h2>{{this.sale}}</h2>
+
+          <div id="" class="image-container img_div">
+            <a href="{{../this.link}}" target="_blank"><img class="d-block img-fluid" src="{{../this.image}}" alt="image">
+          <div class="sale"><img src="../Images/sale-img.png" alt="image">
+
+            <h2>{{../this.sale}}</h2>
 
           </div>
           <div class="after">
             <div class="after_internal">
               <h2>Details</h2>
-              <p>Name: {{this.name}}</p>
-              <p>Sale Price: {{this.sale_price}}</p>
-              <p>Original Price: {{this.original_price}}</p>
+              <p>Name: {{../this.name}}</p>
+              <p>Sale Price: {{../this.sale_price}}</p>
+              <p>Original Price: {{../this.original_price}}</p>
             </div>
           </div>
         </a>
 
-        {{#if ../login}}
+        {{#if ../../login}}
         <!-- <button type="button" name="button" class="btn btn-wishlist btn-primary">Add to WishList</button> -->
         <a href="/add-to-list-khaadi/{{this._id}}" class="btn btn-wishlist btn-primary" role="button">Add to WishList</a>
         {{/if}}
       </div>
 
 
+
+
+
+    {{/customif}}
 
 
 

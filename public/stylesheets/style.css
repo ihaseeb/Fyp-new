@@ -14,7 +14,11 @@ body {
 
 .container {
   margin-right: 0px;
+  /*width: 1350px;*/
 }
+
+
+
 
 .navbar-default .navbar-nav>li>a {
   color: white;
@@ -56,9 +60,7 @@ body {
   position: relative;
 }
 
-.navbar-collapse, .collapse, .in {
-  background-color: #526f30;
-}
+
 
 .dropdown .open>a {
   color: white;
@@ -66,6 +68,20 @@ body {
 
 .navbar-default .navbar-nav .open .dropdown-menu>li>a {
   color: white;
+}
+
+#main_imglogo{
+  width: 30px;
+  height: 30px;
+  /*margin-left: -185px;*/
+
+
+}
+.main_heading{
+  float: left;
+  /*margin-left: -150px;*/
+  font-size: 20px;
+
 }
 
 #iconarea {
@@ -80,6 +96,8 @@ body {
   padding: 20px 0px 0px 20px;
   vertical-align: ;
 }
+
+
 
 #heading {
   color: white;
@@ -126,6 +144,8 @@ body {
   overflow: hidden;
   display: flex;
 }
+
+
 
 #Brand_headings {
   background: #526f30;
@@ -507,5 +527,44 @@ border-color: #526f30;
 .see-more .set h2{
   font-size: 20px;
   padding-left: 30px;
+
+}
+.category>li>h4{
+display: inline-block;
+/*margin-bottom: 50px;*/
+/*margin-top: -30px;*/
+margin-right: 20px;
+color: #526f30;
+}
+.category{
+  margin-left: 0px;
+}
+
+.category >li>.btn{
+  margin-right: 20px;
+  /*padding-right: 15px;*/
+  /*padding-left: 15px;*/
+}
+hr{
+      margin-left: -20px;
+      border-top: 1px solid #526f30;
+      width: 90%;
+
+}
+
+.category_header .navbar-toggle {
+
+    background-color: grey;
+
+}
+
+.category_header .navbar-toggle .icon-bar {
+
+    background: white;
+}
+.btn-category{
+  background: #658b3b;
+  color: white;
+  width:   140px;
 
 }

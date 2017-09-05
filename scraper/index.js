@@ -54,7 +54,7 @@ x('https://www.khaadionline.com/pk/sale.html?limit=60', '.products_grid .product
       if (str.toLowerCase().indexOf("shalwar") >= 0 || str.toLowerCase().indexOf("pant") >= 0 || str.toLowerCase().indexOf("tight") >= 0) {
         cat = "pant";
       } else
-      if (str.toLowerCase().indexOf("necklace") >= 0 || str.toLowerCase().indexOf("ring") >= 0 || str.toLowerCase().indexOf("ear") >= 0) {
+      if (str.toLowerCase().indexOf("necklace") >= 0 || str.toLowerCase().indexOf("ring") >= 0 || str.toLowerCase().indexOf("ear") >= 0 || str.toLowerCase().indexOf("stole") >= 0 || str.toLowerCase().indexOf("bag") >= 0) {
         cat = "jewellery";
       } else {
         cat = "dress";
@@ -82,11 +82,13 @@ x('https://www.khaadionline.com/pk/sale.html?limit=60', '.products_grid .product
 
 
     //drop database - following code is added to avoid duplicate data from scrapping
+
+if(khd.length>0){
     db.collection("khaadis").drop(function(err, delOK) {
       if (err) throw err;
       if (delOK) console.log("khaadi duplicate data deleted");
     }); //drop database ends here
-
+}
   } //if(!error) ends here
   else {
     console.log('Error found : ', error);
@@ -155,7 +157,7 @@ x('http://www.amiradnan.com/shalwar-kameez-kurta-sale', '.products .col-md-3', [
 
       amiradnandb.save((err, doc) => {
         if (err) {
-          console.log('err')
+          console.log('err', err);
         } else {}
       });
 
@@ -167,10 +169,14 @@ x('http://www.amiradnan.com/shalwar-kameez-kurta-sale', '.products .col-md-3', [
 
     //drop database - following code is added to avoid duplicate data from scrapping
     // if(db.collection('amir_adnans').find()=true){
-    db.collection("amir_adnans").drop(function(err, delOK) {
-      if (err) throw err;
-      if (delOK) console.log("amir adnan duplicate data deleted");
-    }); //drop database ends here
+
+    if(result.length>0){
+      db.collection("amir_adnans").drop(function(err, delOK) {
+          if (err) throw err;
+          if (delOK) console.log("amir_adnans duplicate data deleted");
+        });
+    }
+     //drop database ends here
     // }
     // else{
     //   console.log("no database exit atm");
@@ -186,7 +192,7 @@ x('http://www.amiradnan.com/shalwar-kameez-kurta-sale', '.products .col-md-3', [
 ///////////////////////// generation starts here...///////////////////////////////
 
 
-x('http://www.generation.com.pk/sale', '.products-grid .item',[{
+x('https://www.generation.com.pk/sale', '.products-grid .item',[{
   name:'.product-info .product-name a',
   sale_price:'.product-info .price-box .special-price .price',
   original_price:'.product-info .price-box .old-price .price',
@@ -280,11 +286,12 @@ x('http://www.generation.com.pk/sale', '.products-grid .item',[{
 
   //drop database - following code is added to avoid duplicate data from scrapping
   // if(db.collection('amir_adnans').find()=true){
+  if(result.length>0){
   db.collection("generations").drop(function(err, delOK) {
       if (err) throw err;
       if (delOK) console.log("generations duplicate data deleted");
     });//drop database ends here
-  // }
+  }
   // else{
   //   console.log("no database exit atm");
   // }
@@ -432,11 +439,12 @@ else{
 
   //drop database - following code is added to avoid duplicate data from scrapping
   // if(db.collection('amir_adnans').find()=true){
+if(result.length>0){
   db.collection("khaas").drop(function(err, delOK) {
       if (err) throw err;
       if (delOK) console.log("khaas duplicate data deleted");
     });//drop database ends here
-  // }
+  }
   // else{
   //   console.log("no database exit atm");
   // }

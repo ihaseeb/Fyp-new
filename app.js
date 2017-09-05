@@ -11,6 +11,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
+var handlebarsHelper = require('./helpers/handlebars');
 
 
 var routes = require('./routes/index');
@@ -24,7 +25,8 @@ require('./config/passport');
 // view engine setup
 app.engine('.hbs', expressHbs({
   defaultLayout: 'layout',
-  extname: '.hbs'
+  extname: '.hbs',
+  helpers: handlebarsHelper
 }));
 app.set('view engine', '.hbs');
 

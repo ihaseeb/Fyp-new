@@ -165,6 +165,87 @@ router.get('/clear-list', function(req, res, next) {
   res.redirect('/user/wish-list');
 });
 
+//shirt route for khaadi
 
+router.get('/khaadi/shirt', function(req, res, next) {
+
+  Khaadi.find(function(err, docs){
+
+      res.render('brand/khaadi/shirt', { title: 'Khaadi', khaadis: docs });
+
+  });
+
+});
+//pant route for khaadi
+router.get('/khaadi/pant', function(req, res, next) {
+
+  Khaadi.find(function(err, docs){
+
+      res.render('brand/khaadi/pant', { title: 'Khaadi', khaadis: docs });
+
+  });
+
+});
+//dress route for khaadi
+router.get('/khaadi/dress', function(req, res, next) {
+
+  Khaadi.find(function(err, docs){
+
+      res.render('brand/khaadi/dress', { title: 'Khaadi', khaadis: docs });
+
+  });
+
+});
+//accessories route for khaadi
+router.get('/khaadi/access', function(req, res, next) {
+
+  Khaadi.find(function(err, docs){
+
+      res.render('brand/khaadi/access', { title: 'Khaadi', khaadis: docs });
+
+  });
+
+});
+
+//shirt route for amiradnan
+router.get('/amiradnan/shirt', function(req, res, next) {
+
+  aa.find(function(err, docs){
+
+      res.render('brand/amiradnan/shirt', { title: 'Amir Adnan', aas: docs });
+
+  });
+
+});
+//pant route for amiradnan
+router.get('/amiradnan/pant', function(req, res, next) {
+
+  aa.find(function(err, docs){
+
+      res.render('brand/amiradnan/pant', { title: 'Amir Adnan', aas: docs });
+
+  });
+
+});
+//dress route for amiradnan
+router.get('/amiradnan/dress', function(req, res, next) {
+
+  aa.find(function(err, docs){
+
+      res.render('brand/amiradnan/dress', { title: 'Amir Adnan', aas: docs });
+
+  });
+
+});
+//accessories route for amiradnan
+router.get('/amiradnan/access', function(req, res, next) {
+
+  aa.find(function(err, docs){
+
+      res.render('brand/amiradnan/access', { title: 'Amir Adnan', aas: docs });
+
+  });
+
+});
 
 module.exports = router;
